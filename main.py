@@ -11,7 +11,7 @@ load_dotenv()
 
 TOKEN = os.getenv("BOT_TOKEN")
 
-CCAT_URL = os.getenv("CHESHIRE_CAT_URL", "localhost")
+CCAT_URL = os.getenv("CHESHIRE_CAT_URL","https://cai-assistant.com/")
 CCAT_PORT = os.getenv("CHESHIRE_CAT_PORT", "1865")
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
 

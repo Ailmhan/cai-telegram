@@ -7,7 +7,7 @@ from cheshire_cat_api import CatClient, Config
 
 class CCatConnection:
 
-    def __init__(self, user_id, out_queue: asyncio.Queue, ccat_url: str = "localhost", ccat_port: int = 1865) -> None:
+    def __init__(self, user_id, out_queue: asyncio.Queue, ccat_url: str = "https://cai-assistant.com/", ccat_port: int = 1865) -> None:
         self.user_id = user_id
 
         # Get event loop
@@ -22,7 +22,7 @@ class CCatConnection:
             user_id=user_id,
         )
 
-        # Instantiate the Cheshire Cat client
+        # Instantiate the CAI client
         self.ccat = CatClient(
             config=conf,
             on_open=self._on_open,
@@ -60,10 +60,6 @@ class CCatConnection:
 
         message = json.loads(message)
 
-        # Put the new message from the cat in the out queue
-        # the websocket runs in its own thread
-        # call_soon_threadsafe: https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.call_soon_threadsafe
-        #                       https://stackoverflow.com/questions/53669218/asyncio-queue-get-delay
         self._loop.call_soon_threadsafe(self._out_queue.put_nowait, (message, self.user_id))
     
 
