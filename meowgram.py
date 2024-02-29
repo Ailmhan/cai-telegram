@@ -21,7 +21,7 @@ from ccat_connection import CCatConnection
 
 class Meowgram():
 
-    def __init__(self, telegram_token: str, ccat_url: str, ccat_port: int = 1865) -> None:
+    def __init__(self, telegram_token: str, ccat_url: str, ccat_port: int = 443) -> None:
 
         self.ccat_url = ccat_url
         self.ccat_port = ccat_port

@@ -1,7 +1,6 @@
 import os
 import logging
 import asyncio
-
 from colorlog import ColoredFormatter
 from dotenv import load_dotenv
 
@@ -11,8 +10,8 @@ load_dotenv()
 
 TOKEN = os.getenv("BOT_TOKEN")
 
-CCAT_URL = os.getenv("CHESHIRE_CAT_URL","https://cai-assistant.com/")
-CCAT_PORT = os.getenv("CHESHIRE_CAT_PORT", "1865")
+CCAT_URL = os.getenv("CHESHIRE_CAT_URL", "https://cai-assistant.com")
+CCAT_PORT = os.getenv("CHESHIRE_CAT_PORT", "443")
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
 
 # Create a colored formatter

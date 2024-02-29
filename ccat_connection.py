@@ -1,13 +1,12 @@
 import asyncio
 import logging
 import json
-
 from cheshire_cat_api import CatClient, Config
 
 
 class CCatConnection:
 
-    def __init__(self, user_id, out_queue: asyncio.Queue, ccat_url: str = "https://cai-assistant.com/", ccat_port: int = 1865) -> None:
+    def __init__(self, user_id, out_queue: asyncio.Queue, ccat_url: str = "https://cai-assistant.com", ccat_port: int = 443) -> None:
         self.user_id = user_id
 
         # Get event loop
@@ -40,12 +39,12 @@ class CCatConnection:
     async def connect(self):
 
         if self._stop_waiting_connection is not None:
-            logging.warning(f"Already waiting for websocket connection for user {self.user_id}")
+            logging.warning(f"Уже ожидает подключения через веб-сокету для пользователя {self.user_id}")
             return
         
         self.ccat.connect_ws()
 
-        logging.info(f"Waiting for websocket connection for user {self.user_id}")
+        logging.info(f"Ожидание подключения веб-сокета {self.user_id}")
 
         # Create the event to stop waiting for connection
         self._stop_waiting_connection = asyncio.Event()
